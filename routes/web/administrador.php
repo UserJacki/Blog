@@ -1,22 +1,5 @@
 <?php
 
-
-/*Route::get('/', function () {
-    return view('welcome');
-});*/
-
-//RUTAS PARA USUARIOS NORMALES ES DECIR, INVITADOS
-/* Route::get('/', 'WelcomeController@welcome')->name('welcome'); //index
-Route::get('/tema/{tema}','ThemeController@show')->name('tema'); //articulos por cada tema
-Route::get('/buscador', 'SearchController@index')->name('buscador');  */  //ruta del buscador
-
-
-//RUTA USUARIOS AUTENTICADOS
-/* Auth::routes(['verify' => true]);
-
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'); //RUTA ORIGEN de redireccion despues de loguearse
-Route::put('/actualizar', 'UserController@update')->name('actualizaruser'); //ruta del buscador //actualizar datos de usuario
-
 //SE AGREGAN LAS RUTAS DENTRO DEL MIDLEWARE
 Route::middleware(['auth','role:administrador'])->group(function(){
     //RUTAS ADMINISTRADOR
@@ -46,21 +29,3 @@ Route::middleware(['auth','role:administrador'])->group(function(){
     Route::get('admin/buscador/usuarios','admin\SearchUserController@index');
 
 });
-
-//RUTAS MODERADOR
-Route::middleware(['auth','verified','role:moderador'])->group(function(){
-
-    //el route:resource engloba todas las rutas del moderador y para modificar el nombre de cada ruta se hace de la siguiente manera
-    Route::resource('moderador/articulos','moderador\ArticleController',['names' =>[
-        'index' => 'moderador.articulos.index',
-        'create' => 'moderador.articulos.create',
-        'store' => 'moderador.articulos.store',
-        'show' => 'moderador.articulos.show',
-        'edit' => 'moderador.articulos.edit',
-        'update' => 'moderador.articulos.update',
-        'destroy' => 'moderador.articulos.destroy',
-    ]]);
-    Route::get('moderador/imagenes/{imagen}','moderador\ArticleImageController@destroy')->name('moderador.imagen.delete');
-    Route::get('moderador/buscador/articulos','moderador\SearchArticleController@index');
-});  */
-
